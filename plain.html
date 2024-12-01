@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream GHAR, SR Streaming - Live TV Channel</title>
+    <link rel="icon" href="https://img.icons8.com/doodle/192/charles-montgomery-burns.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        nav {
+            display: flex;
+            margin: 12px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ffd700;
+            /* Gold color for links */
+            text-decoration: none;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            /* Gold color for underline */
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width .3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            margin-top: 70px;
+            padding: 20px;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .post {
+            width: 236px;
+            cursor: pointer;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .post:hover {
+            transform: scale(1.05);
+        }
+
+        .post img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            width: 90%;
+            height: 80%;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1px;
+            right: -14px;
+            color: white;
+            font-size: 60px;
+            cursor: pointer;
+        }
+
+        #videoPlayerContainer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        #wait {
+            position: absolute;
+            bottom: -25px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: poppins;
+            font-weight:bold;
+        }
+
+
+        #fullscreenButton {
+            position: absolute;
+            bottom: -25px;
+            left: 1060px;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            font:bold;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: poppins;
+        }
+
+        #wait:hover{
+            background-color: #14c06d;
+            transition: 0.7s ease;
+        }
+
+
+        #fullscreenButton:hover{
+            background-color: #14c06d;
+            transition: 0.7s ease;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">SAMEER</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#cont">Contact</a>
+            <a href="#dmca">DMCA</a>
+            <a href="#">Privacy Policy</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="post" onclick="openPopup('https://offerstore.xyz/DRM/live1.php?id=FANCODE')">
+            <img src="https://geekymint.com/wp-content/uploads/2022/08/fancode.jpg" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>FANCODE HD</p>
+            </div>
+        </div>
+
+
+        <div class="post" onclick="openPopup('https://offerstore.xyz/AGV/play.php?play=65')">
+            <img src="https://tv.tflix.app/wp-content/uploads/2024/03/sky-sports-cricket-tflix.png" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports Cricket</p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://offerstore.xyz/AGV/play.php?play=346')">
+            <img src="https://img.willow.tv/apps/wtv_logo_new_200_200.jpg" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Willow HD</p>
+            </div>
+        </div>
+        <div class="post" onclick="openPopup('https://offerstore.xyz/AGV/play.php?play=38')">
+            <img src="https://archive.org/download/SkySportsMainEvent_201708/sky%20sports%20main%20event.png" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>SKY Sports Main Event HD</p>
+            </div>
+        </div>
+        <div class="post" onclick="openPopup('https://offerstore.xyz/AGV/play.php?play=46')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2f7clC250tYnG_BvOX0aFrz3UYsQgVo6hVA&s" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports Tennis</p>
+            </div>
+        </div>
+        <div class="post" onclick="openPopup('https://offerstore.xyz/AGV/play.php?play=369')">
+            <img src="https://www.thesportsdb.com/images/media/channel/logo/FOX_Cricket.png" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Fox Cricket 503 </p>
+            </div>
+        </div>
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/TNTSports1[UK]')">
+            <img src="https://neesport.xyz/wp-content/uploads/2023/07/tnt1.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>TNT Sports HD</p>
+            </div>
+        </div> <div class="post" onclick="openPopup('https://cdn.bokulsports.com/sports/sportstv.php?c=tenspk')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLMhVJFXkNYK7trsuhRe58ZK1-pQLUhD3T6w&s" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Ten Cricket HD</p>
+            </div>
+        </div>
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/TNTSports2[UK]')">
+            <img src="https://neesport.xyz/wp-content/uploads/2023/07/tntt2.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>TNT Sports 2 HD</p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/TNTSports3[UK]')">
+            <img src="https://neesport.xyz/wp-content/uploads/2023/07/tnt3.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>TNT Sports 3 HD</p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/TNTSports4[UK]')">
+            <img src="https://neesport.xyz/wp-content/uploads/2023/07/tntt4.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>TNT Sports 4 HD</p>
+            </div>
+        </div>
+        
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport1[NewZealand]')">
+            <img src="https://img.dge-prod.dicelaboratory.com/thumbnails/219026/original/latest.jpg" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sport 1 NZ</p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport2[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/10/231-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 2 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport3[NewZealand]')">
+            <img src="https://www.thesportsdb.com/images/media/channel/logo/e1htne1642606972.png" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 3 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport4[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/272-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 4 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport5[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/273-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 5 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport6[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/278-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 6 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport7[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/289-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 7 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://topembed.pw/channel/SkySport8[NewZealand]')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/305-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>Sky Sports 8 NZ </p>
+            </div>
+        </div>
+
+        <div class="post" onclick="openPopup('https://cdn.stmify.com/embed/usa-network.php')">
+            <img src="https://stmify.com/wp-content/uploads/2024/11/361-s.webp" alt="TV Channel Logo">
+            <div class="post-content">
+                <p>USA Network </p>
+            </div>
+        </div>
+
+
+
+        
+        
+
+        
+        <!-- Repeat for other channels -->
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">×</span>
+            <div id="videoPlayerContainer"></div>
+            <button id="wait" onclick="toggleFullscreen()">Wait 5 Sec to load the content</button>
+            <button id="fullscreenButton" onclick="toggleFullscreen()">Fullscreen</button>
+        </div>
+    </div>
+
+    <script>
+        function openPopup(url) {
+            const popup = document.getElementById('popup');
+            const videoContainer = document.getElementById('videoPlayerContainer');
+
+            popup.style.display = 'flex';
+
+            // Create iframe with the necessary attributes
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.className = 'metaframe rptss';
+            iframe.frameBorder = '0';
+            iframe.scrolling = 'no';
+            iframe.allow = 'autoplay; encrypted-media';
+            iframe.allowFullscreen = true;
+            iframe.style.width = '100%';
+            iframe.style.height = '80vh';
+
+            // Clear existing content and append the new iframe
+            videoContainer.innerHTML = '';
+            videoContainer.appendChild(iframe);
+        }
+
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            const container = document.getElementById('videoPlayerContainer');
+            popup.style.display = 'none';
+            container.innerHTML = '';  // Clear iframe content
+        }
+
+        function toggleFullscreen() {
+            const iframe = document.querySelector('#videoPlayerContainer iframe');
+            if (!iframe) return;  // Exit if no iframe
+
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                iframe.requestFullscreen().catch(err => console.error('Fullscreen failed:', err));
+            }
+        }
+    </script>
+</body>
+
+</html>
